@@ -13,7 +13,7 @@ GO
 CREATE TABLE Usuarios (
     id INT IDENTITY(1,1) PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
-    email VARCHAR(150) NOT NULL UNIQUE,
+    mail VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(30)  NOT NULL CHECK (role IN ('Administrador','Medico','Usuario'))
 );
