@@ -15,22 +15,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public final class DbConnection {
-    protected String driver = "com.mysql.jdbc.Driver";
-    
+    protected String driver = "com.mysql.cj.jdbc.Driver";
+
     protected String stringConnDb = System.getenv("MYSQLHOST") != null ? System.getenv("MYSQLHOST") : "localhost";
     protected String url = "jdbc:mysql://";
     protected int portDb = System.getenv("MYSQLPORT") != null ? Integer.parseInt(System.getenv("MYSQLPORT")) : 3306;
     protected String userDb = System.getenv("MYSQLUSER") != null ? System.getenv("MYSQLUSER") : "root";
     protected String passUserDb = System.getenv("MYSQLPASSWORD") != null ? System.getenv("MYSQLPASSWORD") : "";
-    protected String nameDb = System.getenv("MYSQLDATABASE") != null ? System.getenv("MYSQLDATABASE") : "mibasededatos";
-    
+    protected String nameDb = System.getenv("MYSQLDATABASE") != null ? System.getenv("MYSQLDATABASE") : "GestionEnfermedades_db";
+
     private Connection conn;
 
     public DbConnection() throws Exception {
-        url = url + stringConnDb + ":" + portDb + "/" + userDb;
+        url = url + stringConnDb + ":" + portDb + "/" + nameDb + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         this.connect();
     }
-    
+
+    public Connection getConnection() {
+        return conn;
+    }
+
     public void connect() throws Exception {
         try {
             Class.forName(driver);
@@ -43,6 +47,7 @@ public final class DbConnection {
             throw new Exception("Error de Conexion \n Codigo:" + ex.getErrorCode() + " Explicacion:" + ex.getMessage());
         }
     }
+
     public int update(PreparedStatement sentencia) throws Exception {
         try {
             int res = sentencia.executeUpdate();
