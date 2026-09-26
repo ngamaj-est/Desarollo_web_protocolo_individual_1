@@ -7,6 +7,7 @@
     <groupId>org.unicartagena.actividad.enfermedades</groupId>
     <artifactId>protocolo_1_nathan_gama</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -24,14 +25,7 @@
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>6.0.0</version>
-            <type>jar</type>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
-    <dependency>
-        <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.0.0</version>
-            <scope>provided</scope>
-    </dependency>
-
 </project>

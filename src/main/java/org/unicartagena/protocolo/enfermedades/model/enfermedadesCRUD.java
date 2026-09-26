@@ -2,6 +2,8 @@ package org.unicartagena.protocolo.enfermedades.model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class enfermedadesCRUD {
     private Enfermedades enfermedad = new Enfermedades();
@@ -35,6 +37,7 @@ public class enfermedadesCRUD {
 
     public static Enfermedades[] listarEnfermedades() throws Exception {
         DbConnection db = null;
+        List<Enfermedades> listado = new ArrayList<>();
         String sql = "SELECT * FROM Enfermedades ORDER BY id";
 
         try {
@@ -42,14 +45,6 @@ public class enfermedadesCRUD {
             PreparedStatement ps = db.createSentence(sql);
             ResultSet rs = db.consult(ps);
 
-            rs.last();
-            int totalRows = rs.getRow();
-            rs.beforeFirst();
-
-            if (totalRows <= 0) return new Enfermedades[0];
-
-            Enfermedades[] listado = new Enfermedades[totalRows];
-            int i = 0;
             while (rs.next()) {
                 Enfermedades e = new Enfermedades();
                 e.setId(rs.getInt("id"));
@@ -61,10 +56,9 @@ public class enfermedadesCRUD {
                 e.setEsContagiosa(rs.getBoolean("esContagiosa"));
                 e.setEsCubiertaPorPos(rs.getBoolean("esCubiertaPorPos"));
                 e.setRequiereIncapacidad(rs.getBoolean("requiereIncapacidad"));
-                listado[i] = e;
-                i++;
+                listado.add(e);
             }
-            return listado;
+            return listado.toArray(Enfermedades[]::new);
         } catch (Exception e) {
             throw new Exception("Error al listar enfermedades: " + e.getMessage());
         } finally {

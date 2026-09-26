@@ -20,10 +20,15 @@ public class ServletEnfermedades extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        if (request.getSession().getAttribute("usuario.login") == null) {
+            response.sendRedirect(request.getContextPath() + "/views/index.jsp");
+            return;
+        }
+
         try {
             String accion = request.getParameter("accion");
             if (accion == null || accion.trim().isEmpty()) {
-                response.sendRedirect("mensaje.jsp?mensaje=Accion no especificada");
+                response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Accion%20no%20especificada");
                 return;
             }
 
@@ -33,13 +38,13 @@ public class ServletEnfermedades extends HttpServlet {
                     enfermedadesCRUD crudAgregar = new enfermedadesCRUD();
                     crudAgregar.setEnfermedad(nuevaEnfermedad);
                     crudAgregar.agregarEnfermedad();
-                    response.sendRedirect("enfermedad/agregar.jsp?mensaje=Enfermedad agregada exitosamente");
+                    response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Enfermedad%20agregada%20exitosamente");
                 }
 
                 case "listartodo" -> {
                     Enfermedades[] listado = enfermedadesCRUD.listarEnfermedades();
                     request.getSession().setAttribute("enfermedades.listar", listado);
-                    response.sendRedirect("enfermedad/listar.jsp");
+                    response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades");
                 }
 
 
@@ -48,11 +53,11 @@ public class ServletEnfermedades extends HttpServlet {
                     enfermedadesCRUD crudBuscar = new enfermedadesCRUD();
                     Enfermedades enfermedadEncontrada = crudBuscar.buscarPorId(idBuscar);
                     if (enfermedadEncontrada == null) {
-                        response.sendRedirect("mensaje.jsp?mensaje=Enfermedad no encontrada");
+                        response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Enfermedad%20no%20encontrada");
                         return;
                     }
                     request.getSession().setAttribute("enfermedad.buscar", enfermedadEncontrada);
-                    response.sendRedirect("enfermedad/editar.jsp?id=" + idBuscar + "&mensaje=Enfermedad encontrada");
+                    response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Enfermedad%20encontrada");
                 }
 
                 case "actualizar" -> {
@@ -63,21 +68,21 @@ public class ServletEnfermedades extends HttpServlet {
                     enfermedadesCRUD crudActualizar = new enfermedadesCRUD();
                     crudActualizar.setEnfermedad(enfermedadActualizar);
                     crudActualizar.actualizarEnfermedad(idActualizar);
-                    response.sendRedirect("enfermedad/listar.jsp?mensaje=Enfermedad actualizada exitosamente");
+                    response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Enfermedad%20actualizada%20exitosamente");
                 }
 
                 case "eliminar" -> {
                     int idEliminar = obtenerId(request, "id", "El id de la enfermedad es obligatorio para eliminarla");
                     enfermedadesCRUD crudEliminar = new enfermedadesCRUD();
                     crudEliminar.eliminarEnfermedad(idEliminar);
-                    response.sendRedirect("enfermedad/listar.jsp?mensaje=Enfermedad eliminada exitosamente");
+                    response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Enfermedad%20eliminada%20exitosamente");
                 }
 
-                default -> response.sendRedirect("mensaje.jsp?mensaje=Accion desconocida");
+                default -> response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Accion%20desconocida");
             }
         } catch (Exception e) {
             String mensaje = URLEncoder.encode(e.getMessage(), StandardCharsets.UTF_8);
-            response.sendRedirect("mensaje.jsp?mensaje=" + mensaje);
+            response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=" + mensaje);
         }
     }
 
