@@ -22,8 +22,7 @@ public final class DbConnection {
     protected int portDb = System.getenv("MYSQLPORT") != null ? Integer.parseInt(System.getenv("MYSQLPORT")) : 3306;
     protected String userDb = System.getenv("MYSQLUSER") != null ? System.getenv("MYSQLUSER") : "root";
     protected String passUserDb = System.getenv("MYSQLPASSWORD") != null ? System.getenv("MYSQLPASSWORD") : "";
-    protected String nameDb = System.getenv("MYSQLDATABASE") != null ? System.getenv("MYSQLDATABASE") : "GestionEnfermedades_db";
-
+    protected String nameDb = System.getenv("MYSQL_DATABASE") != null ? System.getenv("MYSQL_DATABASE") : "GestionEnfermedades_db";
     private Connection conn;
 
     public DbConnection() throws Exception {
