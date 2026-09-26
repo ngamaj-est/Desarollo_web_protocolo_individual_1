@@ -1,15 +1,145 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
-
-:root {
-    font-family: 'DM Sans', sans-serif;
-    color: #3e718a;
-    background: #f2f6f4;
+* {
+    box-sizing: border-box;
 }
 
-* { box-sizing: border-box; }
-body { 
-    margin: 0; 
-    min-height: 100vh; 
-    background: radial-gradient(ellipse at 4% 0%, #d7ebe2 0, transparent 40%), 
-    linear-gradient(130deg, #f7f9f6, #edf3f0); 
+body {
+    margin: 0;
+    color: #26332e;
+    background: #f2f5f3;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.data-table th,
+.data-table td {
+    padding: 10px;
+    border-bottom: 1px solid #d9e1dd;
+    vertical-align: top;
+}
+
+.data-table th {
+    background: #e8efeb;
+}
+
+.data-table td small {
+    display: block;
+    color: #66766f;
+}
+
+.data-table .badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #e4f0e9;
+    color: #245b4b;
+}
+
+.data-table .actions {
+    display: flex;
+    gap: 6px;
+}
+
+.data-table .inline-form {
+    display: inline;
+}
+
+.auth-shell {
+    display: grid;
+    min-height: 100vh;
+    padding: 20px;
+    place-items: center;
+}
+
+.auth-card {
+    display: grid;
+    width: 420px;
+    gap: 14px;
+    padding: 24px;
+    border: 1px solid #d9e1dd;
+    border-radius: 5px;
+    background: white;
+}
+
+.auth-card h2,
+.auth-card p {
+    margin: 0;
+}
+
+.auth-card h2 {
+    color: #245b4b;
+}
+
+.auth-card .eyebrow {
+    color: #66766f;
+    font-size: 13px;
+}
+
+.auth-card form {
+    display: grid;
+    gap: 12px;
+}
+
+.auth-card .field {
+    display: grid;
+    gap: 5px;
+}
+
+.auth-card .field input {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #bdcbc3;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.auth-card .btn,
+.data-table .btn {
+    padding: 8px 11px;
+    border: 0;
+    border-radius: 4px;
+    background: #287052;
+    color: white;
+    font: inherit;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.data-table .btn-secondary {
+    background: #e8efeb;
+    color: #245b4b;
+}
+
+.data-table .btn-danger {
+    background: #a33e36;
+}
+
+.data-table .btn-small {
+    padding: 5px 8px;
+    font-size: 13px;
+}
+
+.auth-card .btn.full {
+    width: 100%;
+}
+
+.auth-card .form-link {
+    color: #245b4b;
+    text-align: center;
+}
+
+.auth-card .notice {
+    padding: 10px;
+    border: 1px solid #b6d3c1;
+    background: #e9f4ed;
+    color: #245b4b;
 }
