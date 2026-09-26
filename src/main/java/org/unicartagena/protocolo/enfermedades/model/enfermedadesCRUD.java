@@ -1,4 +1,4 @@
-﻿package org.unicartagena.protocolo.enfermedades.model;
+package org.unicartagena.protocolo.enfermedades.model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
