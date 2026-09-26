@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.unicartagena.protocolo.enfermedades.model.User;
 
 import java.io.IOException;
+import org.unicartagena.protocolo.enfermedades.model.UserCRUD;
 
 @WebServlet(name = "ServletAuth", urlPatterns = {"/auth", "/auth/*"}, loadOnStartup = 1)
 public class ServletAuth extends HttpServlet {
@@ -28,7 +29,7 @@ public class ServletAuth extends HttpServlet {
                     return;
                 }
 
-                User user = CRUDUsuario.iniciarSesion(email, password);
+                User user = UserCRUD.Login(email, password);
                 if (user == null) {
                     response.sendRedirect("usuario/login.jsp?mensaje=Credenciales invalidas");
                     return;
