@@ -2,6 +2,8 @@
 
 Protocolo individual unidad 1 en donde se realizo el ejercicio asignado numero 9 en donde se construyo una Aplicación web Java para administrar usuarios y un catálogo de enfermedades. La interfaz está construida con JSP, los controladores usan Jakarta Servlets, la persistencia se realiza con JDBC y MySQL, y el despliegue está preparado para Tomcat 10.1.
 
+URL DEL PROYECRTO DESPLEGADO: desarollowebprotocoloindividual1-production.up.railway.app
+
 ## Requisitos
 
 - JDK 21.
