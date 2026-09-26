@@ -112,10 +112,6 @@ El script SQL carga estas cuentas iniciales:
 | `nathan.gama@admin.com` | `admin` | Administrador |
 | `antonio.lopez@medico.com` | `medico123` | Medico |
 
-Estas credenciales son únicamente para desarrollo local. Cambia o elimina las cuentas de ejemplo en cualquier entorno compartido.
-
-
-
 ## Endpoints principales
 
 | Ruta | Función |
