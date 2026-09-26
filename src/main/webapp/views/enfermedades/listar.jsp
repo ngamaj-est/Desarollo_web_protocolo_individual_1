@@ -16,5 +16,4 @@
     <% } %>
     <% if (enfermedades == null || enfermedades.length == 0) { %><tr><td colspan="5" class="empty">No hay enfermedades registradas.</td></tr><% } %>
     </tbody></table></div>
-    <p class="table-scroll-note">Desliza horizontalmente la tabla en pantallas pequeñas.</p>
 </section>

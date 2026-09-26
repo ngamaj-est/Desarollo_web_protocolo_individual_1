@@ -3,7 +3,7 @@
 <%@include file="/views/partials/escape.jspf"%>
 <% User usuarioSidebar = (User) session.getAttribute("usuario.login"); %>
 <aside class="sidebar">
-    <div class="side-brand"><div class="brand-mark" aria-hidden="true">+</div><div><strong>Salud / Gestión</strong><small>Panel de información</small></div></div>
+    <div class="side-brand"><div class="brand-mark" aria-hidden="true">+</div><div><small>Panel de información</small></div></div>
     <div class="side-label">Módulos</div>
     <nav class="nav" aria-label="Módulos principales">
         <a class="<%= "usuarios".equals(request.getAttribute("modulo")) ? "active" : "" %>" href="<%= request.getContextPath() %>/dashboard?modulo=usuarios">Usuarios</a>

@@ -25,7 +25,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= usuariosActivo ? "Usuarios" : "Enfermedades" %> | Salud</title>
+    <title><%= usuariosActivo ? "Usuarios" : "Enfermedades" %></title>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/app.css">
     <style>
         .app-shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); min-height: 100vh; }
@@ -69,7 +69,7 @@
         <jsp:include page="/views/partials/sidebar.jsp" />
         <main>
             <header class="topline">
-                <div><div class="eyebrow">Panel de administración</div><h1><%= titulo %></h1><p><%= "listar".equals(vista) ? (usuariosActivo ? "Gestiona las cuentas y los roles registrados." : "Consulta y administra la información clínica.") : "Completa la información solicitada." %></p></div>
+                <div><div class="eyebrow">Panel de administración</div><h1><%= titulo %></h1><p><%= "listar".equals(vista) ? (usuariosActivo ? " " : " ") : " " %></p></div>
             </header>
             <% if (mensaje != null && !mensaje.isBlank()) { %><div class="notice" role="status"><%= escapeHtml(mensaje) %></div><% } %>
             <section class="dashboard-panel">

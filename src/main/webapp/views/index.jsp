@@ -21,9 +21,9 @@
 <body>
     <div class="auth-shell">
         <section class="auth-card" aria-labelledby="form-title">
-            <div class="eyebrow"><%= registro ? "Acceso al sistema" : "Bienvenido de nuevo" %></div>
+            <div class="eyebrow"><%= registro ? "Acceso al sistema" : " " %></div>
             <h2 id="form-title"><%= registro ? "Crear una cuenta" : "Iniciar sesión" %></h2>
-            <p class="subtext"><%= registro ? "Regístrate como usuario para comenzar." : "Ingresa tus credenciales para continuar." %></p>
+            <p class="subtext"><%= registro ? "Regístrate como usuario para comenzar." : " " %></p>
             <% if (mensaje != null && !mensaje.isBlank()) { %><div class="notice" role="status"><%= escapeHtml(mensaje) %></div><% } %>
             <% if (registro) { %>
                 <form action="<%= request.getContextPath() %>/auth" method="post">
