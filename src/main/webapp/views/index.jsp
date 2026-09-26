@@ -20,12 +20,6 @@
 </head>
 <body>
     <div class="auth-shell">
-        <section class="brand-panel">
-            <div class="brand-mark" aria-hidden="true">+</div>
-            <div class="eyebrow">Gestión clínica</div>
-            <h1>Información clara para cuidar mejor.</h1>
-            <p>Administra usuarios y consulta la información de enfermedades desde un solo espacio de trabajo.</p>
-        </section>
         <section class="auth-card" aria-labelledby="form-title">
             <div class="eyebrow"><%= registro ? "Acceso al sistema" : "Bienvenido de nuevo" %></div>
             <h2 id="form-title"><%= registro ? "Crear una cuenta" : "Iniciar sesión" %></h2>
