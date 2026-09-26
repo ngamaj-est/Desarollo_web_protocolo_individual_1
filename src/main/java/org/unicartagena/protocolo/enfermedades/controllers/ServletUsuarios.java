@@ -16,6 +16,7 @@ public class ServletUsuarios extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         if (request.getSession().getAttribute("usuario.login") == null) {
             response.sendRedirect(request.getContextPath() + "/views/index.jsp");
             return;
@@ -39,7 +40,12 @@ public class ServletUsuarios extends HttpServlet {
                 }
                 case "buscar" -> {
                     int id = obtenerId(request);
-                    request.getSession().setAttribute("usuario.editar", UserCRUD.getUserById(id));
+                    User usuarioEditar = UserCRUD.getUserById(id);
+                    if (usuarioEditar == null) {
+                        throw new IllegalArgumentException("No se encontró el usuario solicitado");
+                    }
+                    request.getSession().setAttribute("usuario.editar", usuarioEditar);
+                    destino += "&vista=editar";
                 }
                 case "actualizar" -> {
                     User usuario = mapearUsuario(request);

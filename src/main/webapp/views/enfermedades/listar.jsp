@@ -1,3 +1,4 @@
+<%@page pageEncoding="UTF-8"%>
 <%@page import="org.unicartagena.protocolo.enfermedades.model.Enfermedades"%>
 <%@include file="/views/partials/escape.jspf"%>
 <% Enfermedades[] enfermedades = (Enfermedades[]) request.getAttribute("enfermedades"); %>

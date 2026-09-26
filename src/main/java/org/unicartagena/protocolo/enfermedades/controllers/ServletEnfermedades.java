@@ -18,6 +18,7 @@ public class ServletEnfermedades extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
 
         if (request.getSession().getAttribute("usuario.login") == null) {
@@ -57,7 +58,7 @@ public class ServletEnfermedades extends HttpServlet {
                         return;
                     }
                     request.getSession().setAttribute("enfermedad.buscar", enfermedadEncontrada);
-                    response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&mensaje=Enfermedad%20encontrada");
+                    response.sendRedirect(request.getContextPath() + "/dashboard?modulo=enfermedades&vista=editar&mensaje=Enfermedad%20encontrada");
                 }
 
                 case "actualizar" -> {

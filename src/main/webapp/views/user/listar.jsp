@@ -1,3 +1,4 @@
+<%@page pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="org.unicartagena.protocolo.enfermedades.model.User"%>
 <%@include file="/views/partials/escape.jspf"%>

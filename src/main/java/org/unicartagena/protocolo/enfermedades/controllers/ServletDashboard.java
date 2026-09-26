@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import org.unicartagena.protocolo.enfermedades.model.Enfermedades;
+import org.unicartagena.protocolo.enfermedades.model.User;
 import org.unicartagena.protocolo.enfermedades.model.UserCRUD;
 import org.unicartagena.protocolo.enfermedades.model.enfermedadesCRUD;
 
@@ -26,19 +28,33 @@ public class ServletDashboard extends HttpServlet {
         }
         request.setAttribute("modulo", modulo);
 
+        String vista = request.getParameter("vista");
+        if (!"agregar".equals(vista) && !"editar".equals(vista)) {
+            vista = "listar";
+        }
+
         try {
             if ("usuarios".equals(modulo)) {
                 request.setAttribute("usuarios", UserCRUD.getAllUsers());
-                request.setAttribute("usuarioEditar", request.getSession().getAttribute("usuario.editar"));
+                User usuarioEditar = (User) request.getSession().getAttribute("usuario.editar");
+                request.setAttribute("usuarioEditar", usuarioEditar);
                 request.getSession().removeAttribute("usuario.editar");
+                if ("editar".equals(vista) && usuarioEditar == null) {
+                    vista = "listar";
+                }
             } else {
                 request.setAttribute("enfermedades", enfermedadesCRUD.listarEnfermedades());
-                request.setAttribute("enfermedadEditar", request.getSession().getAttribute("enfermedad.buscar"));
+                Enfermedades enfermedadEditar = (Enfermedades) request.getSession().getAttribute("enfermedad.buscar");
+                request.setAttribute("enfermedadEditar", enfermedadEditar);
                 request.getSession().removeAttribute("enfermedad.buscar");
+                if ("editar".equals(vista) && enfermedadEditar == null) {
+                    vista = "listar";
+                }
             }
         } catch (Exception e) {
             request.setAttribute("mensaje", "No fue posible cargar los datos: " + e.getMessage());
         }
+        request.setAttribute("vista", vista);
         request.setAttribute("dashboardReady", Boolean.TRUE);
         request.getRequestDispatcher("/views/dashboard.jsp").forward(request, response);
     }

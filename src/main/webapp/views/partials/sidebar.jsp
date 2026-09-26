@@ -1,3 +1,4 @@
+<%@page pageEncoding="UTF-8"%>
 <%@page import="org.unicartagena.protocolo.enfermedades.model.User"%>
 <%@include file="/views/partials/escape.jspf"%>
 <% User usuarioSidebar = (User) session.getAttribute("usuario.login"); %>
